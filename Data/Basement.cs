@@ -32,10 +32,10 @@ public class BasementService
     }
 }
 
-public struct Result
+public class Result
 {
-    public int AppleAmount { get; init; }
-    public int BucketAmount { get; init; }
-    public double Weight { get; init; }
-    public double AverageWeight { get; init; }
+    public int AppleAmount { get; set; }
+    public int BucketAmount { get; set; }
+    public double Weight { get; set; }
+    public double AverageWeight { get; set; }
 }

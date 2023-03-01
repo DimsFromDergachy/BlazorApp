@@ -5,18 +5,57 @@
 
 <PageTitle>Basement</PageTitle>
 
-<h1>Basement statistics: @statisticAmount</h1>
-<h1>Basement statistics: @statisticWeight</h1>
+<h1>Погреб статистика по всем сортам</h1>
 
-<label for="name">Amount of apples:</label>
+<label for="name">Сорт</label>
 
-<InputNumber @bind-Value="amount" />
+<InputSelect @bind-Value="varietyStatistic" >
+        <option value="Все сорта">Все сорта</option>
+        <option value="Гала">Гала</option>
+        <option value="Голден">Голден</option>
+</InputSelect>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                        <td>Количество яблок в погребе:</td>
+                        <td>@result?.AppleAmount</td>
+                </tr>
+                <tr>
+                        <td>Общее количество корзин в погребе:</td>
+                        <td>@result?.BucketAmount</td>
+                </tr>
+                <tr>
+                        <td>Общая масса всех яблок в погребе:</td>
+                        <td>@result?.Weight</td>
+                </tr>
+                <tr>
+                        <td>Средняя масса одного яблока:</td>
+                        <td>@result?.AverageWeight</td>
+                </tr>
+        </tbody>
+    </table>
+
+<h1/>
+
+<h1>Добавить новую корзину:</h1>
+
+<label for="name">Количество яблок:</label>
+
+<InputNumber @bind-Value="amountNewBucket" />
 
 <p></p>
 
-<label for="name">Variety</label>
+<label for="name">Сорт</label>
 
-<InputSelect @bind-Value="variety" >
+<InputSelect @bind-Value="varietyNewBucket" >
         <option value="Гала">Гала</option>
         <option value="Голден">Голден</option>
 </InputSelect>
@@ -26,11 +65,22 @@
 <button class="btn btn-primary" @onclick="AddBucket">Add bucket</button>
 
 @code {
-    private int statisticAmount;
-    private double statisticWeight;
+    private Result result;
 
-    private int amount;
-    private string variety;
+    private string varietyStatistic;
+
+    private int amountNewBucket;
+    private string varietyNewBucket;
+
+    protected override async Task OnInitializedAsync()
+    {
+        UpdateResult();
+    }
+
+    private void UpdateResult(string variety = null)
+    {
+        result = BasementService.GetResult(variety);
+    }
 
     private async Task AddBucket()
     {
@@ -39,14 +89,11 @@
         BasementService.Add(new Bucket
         {
                 Weight = weightModel.Weight,
-                Amount = amount,
-                Variety = variety,
+                Amount = amountNewBucket,
+                Variety = varietyNewBucket,
         });
 
-        var statistic = BasementService.GetResult();
-
-        statisticAmount = statistic.AppleAmount;
-        statisticWeight = statistic.Weight;
+        UpdateResult();
     }
 
     class WeightModel
