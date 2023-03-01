@@ -50,6 +50,15 @@
 </tbody>
 </table>
 
+@if (varietyStatistic != "")
+{
+        <p>
+                <Jam Buckets=@BasementService.Buckets.ToArray()
+                        Variety=@VarietyService.GetByName(varietyStatistic)/>
+        </p>
+}
+
+
 <h1>Добавить новую корзину:</h1>
 
 <label for="name">Количество яблок:</label>

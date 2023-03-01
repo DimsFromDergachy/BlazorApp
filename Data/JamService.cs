@@ -19,9 +19,6 @@ public class JamService
 
     public int GetJarsCounts(double volume)
     {
-        var full = volume / 1;
-        var left = volume % 1;
-
-        return (int)(full + left);
+        return (int) Math.Round(volume, 0, MidpointRounding.ToPositiveInfinity);
     }
 }
