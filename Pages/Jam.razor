@@ -11,15 +11,18 @@
 
 @code {
 
-    [Parameter] public Bucket[] Buckets;
-    [Parameter] public Variety Variety;
+    [Parameter]
+    public Bucket[] Buckets { get; set; }
+
+    [Parameter]
+    public Variety Variety { get; set; }
 
     private int _jars;
     private double _volume;
 
     private void Calc()
     {
-        _volume = JamService.GetJamVolume(Buckets, variety);
+        _volume = JamService.GetJamVolume(Buckets, Variety);
         _jars = JamService.GetJarsCounts(_volume);
     }
 }

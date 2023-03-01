@@ -9,6 +9,8 @@ public class BasementService
         _buckets.Add(bucket);
     }
 
+    public IEnumerable<Bucket> Buckets => _buckets;
+
     public Result GetResult(string variety = null)
     {
         if (string.IsNullOrEmpty(variety))
