@@ -1,0 +1,25 @@
+﻿@using BlazorApp.Data
+
+@inject JamService JamService
+
+
+<h3>Варенье и количество банок для него</h3>
+<label>Объём варенья: @_volume</label>
+<label>Банок на объём>: @_jars</label>
+
+<button class="btn btn-primary" @onclick="Calc">Click me</button>
+
+@code {
+
+    [Parameter] public Bucket[] Buckets;
+    [Parameter] public Variety Variety;
+
+    private int _jars;
+    private double _volume;
+
+    private void Calc()
+    {
+        _volume = JamService.GetJamVolume(Buckets, variety);
+        _jars = JamService.GetJarsCounts(_volume);
+    }
+}

@@ -7,6 +7,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<BasementService>();
+builder.Services.AddSingleton<VarietyService>();
+builder.Services.AddSingleton<JamService>();
 builder.Services.AddHttpClient();
 
 var app = builder.Build();

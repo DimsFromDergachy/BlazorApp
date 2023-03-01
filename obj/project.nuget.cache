@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GrYyAPbJkEl5D2nSJUoHnVYz+Wb8lQV1FM7LRyUTKHgnhF63B1snNZMjA7vbGlX0TZlJn20tDlZkvQ+A21L8WA==",
+  "dgSpecHash": "lggx8tA+HRf9/Ig1VtW2PiPHeBQxK3focHUl8zFDNpgK5ULAd+dHUsZRsm8g3OTpS39W2SNqxe809vRV6fneWw==",
   "success": true,
-  "projectFilePath": "/Users/dt/src/BlazorApp/BlazorApp.csproj",
+  "projectFilePath": "C:\\Users\\khima\\source\\BlazorApp\\BlazorApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

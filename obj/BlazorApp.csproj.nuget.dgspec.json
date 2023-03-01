@@ -1,28 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dt/src/BlazorApp/BlazorApp.csproj": {}
+    "C:\\Users\\khima\\source\\BlazorApp\\BlazorApp.csproj": {}
   },
   "projects": {
-    "/Users/dt/src/BlazorApp/BlazorApp.csproj": {
+    "C:\\Users\\khima\\source\\BlazorApp\\BlazorApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dt/src/BlazorApp/BlazorApp.csproj",
+        "projectUniqueName": "C:\\Users\\khima\\source\\BlazorApp\\BlazorApp.csproj",
         "projectName": "BlazorApp",
-        "projectPath": "/Users/dt/src/BlazorApp/BlazorApp.csproj",
-        "packagesPath": "/Users/dt/.nuget/packages/",
-        "outputPath": "/Users/dt/src/BlazorApp/obj/",
+        "projectPath": "C:\\Users\\khima\\source\\BlazorApp\\BlazorApp.csproj",
+        "packagesPath": "C:\\Users\\khima\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\khima\\source\\BlazorApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/dt/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\khima\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/Users/dt/.local/share/NuGet/tmp": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nexus.niaepnn.ru/repository/nuget-hosted/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -58,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
