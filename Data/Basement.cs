@@ -27,7 +27,8 @@ public class BasementService
                 AppleAmount = _buckets.Where(b => b.Variety.Equals(variety)).Sum(b => b.Amount),
                 BucketAmount = _buckets.Where(b => b.Variety.Equals(variety)).Count(),
                 Weight = _buckets.Where(b => b.Variety.Equals(variety)).Sum(b => b.Weight),
-                AverageWeight = _buckets.Where(b => b.Variety.Equals(variety)).Sum(b => b.Weight) / _buckets.Sum(b => b.Amount),
+                AverageWeight = _buckets.Where(b => b.Variety.Equals(variety)).Sum(b => b.Weight)
+                    / _buckets.Where(b => b.Variety.Equals(variety)).Sum(b => b.Amount),
         };
     }
 }

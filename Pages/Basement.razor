@@ -5,43 +5,45 @@
 
 <PageTitle>Basement</PageTitle>
 
-<h1>Погреб статистика по всем сортам</h1>
+<h1>Погреб статистика по @(varietyStatistic == "" ? "всем сортам" : "сорту " + varietyStatistic)</h1>
 
 <label for="name">Сорт</label>
 
-<InputSelect @bind-Value="varietyStatistic" >
-        <option value="Все сорта">Все сорта</option>
-        <option value="Гала">Гала</option>
-        <option value="Голден">Голден</option>
+<InputSelect
+        ValueExpression="@(()=>varietyStatistic)"
+        Value="@varietyStatistic"
+        ValueChanged="@((string value) => OnValueChanged(value))">
+                <option value="">Все сорта</option>
+                <option value="Гала">Гала</option>
+                <option value="Голден">Голден</option>
 </InputSelect>
 
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-                <tr>
-                        <td>Количество яблок в погребе:</td>
-                        <td>@result?.AppleAmount</td>
-                </tr>
-                <tr>
-                        <td>Общее количество корзин в погребе:</td>
-                        <td>@result?.BucketAmount</td>
-                </tr>
-                <tr>
-                        <td>Общая масса всех яблок в погребе:</td>
-                        <td>@result?.Weight</td>
-                </tr>
-                <tr>
-                        <td>Средняя масса одного яблока:</td>
-                        <td>@result?.AverageWeight</td>
-                </tr>
-        </tbody>
-    </table>
+<table class="table">
+<thead>
+        <tr>
+        <th></th>
+        <th></th>
+        </tr>
+</thead>
+<tbody>
+        <tr>
+                <td>Количество яблок в погребе:</td>
+                <td>@result?.AppleAmount</td>
+        </tr>
+        <tr>
+                <td>Общее количество корзин в погребе:</td>
+                <td>@result?.BucketAmount</td>
+        </tr>
+        <tr>
+                <td>Общая масса всех яблок в погребе:</td>
+                <td>@result?.Weight</td>
+        </tr>
+        <tr>
+                <td>Средняя масса одного яблока:</td>
+                <td>@(Double.IsNaN(result.AverageWeight) ? "-" : result.AverageWeight)</td>
+        </tr>
+</tbody>
+</table>
 
 <h1/>
 
@@ -67,10 +69,10 @@
 @code {
     private Result result;
 
-    private string varietyStatistic;
+    private string varietyStatistic = ""; //
 
     private int amountNewBucket;
-    private string varietyNewBucket;
+    private string varietyNewBucket = "Гала"; // TODO: Fix initializing
 
     protected override async Task OnInitializedAsync()
     {
@@ -79,7 +81,7 @@
 
     private void UpdateResult(string variety = null)
     {
-        result = BasementService.GetResult(variety);
+        result = BasementService.GetResult(varietyStatistic);
     }
 
     private async Task AddBucket()
@@ -95,6 +97,12 @@
 
         UpdateResult();
     }
+
+     private void OnValueChanged(string value)
+        {
+                varietyStatistic = value;
+                UpdateResult(value);
+        }
 
     class WeightModel
     {
